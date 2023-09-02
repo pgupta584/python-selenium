@@ -3,9 +3,10 @@ import time
 from pytest import mark
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
 
 class TestPythonSelenium:
-    @mark.test4
+    @mark.test8
     def test_browser_test(self):
         # We will open the Google Chrome browser.
         driver = webdriver.Chrome()
@@ -13,14 +14,12 @@ class TestPythonSelenium:
         driver.maximize_window()
         driver.get("https://www.facebook.com/")
         time.sleep(2)
-        fb_email = driver.find_element(by=By.NAME, value="email")
-        fb_email.send_keys("name@gmail.com")
+        create_account = driver.find_element(by=By.XPATH, value="//a[@data-testid='open-registration-form-button']")
+        create_account.click()
         time.sleep(2)
-        fb_email.clear()
-        fb_email_1 = driver.find_element(by=By.ID, value="email")
-        fb_email_1.send_keys("id@gmail.com")
-        time.sleep(2)
-        fb_email.clear()
-        fb_email_2 = driver.find_element(by=By.CLASS_NAME, value="inputtext _55r1 _6luy")
-        fb_email_2.send_keys("class@gmail.com")
+        year = driver.find_element(by=By.ID, value="year")
+        # put locator inside select class to use it
+        select_year = Select(year)
+        select_year.select_by_visible_text("2020")
+        time.sleep(5)
         driver.close()
