@@ -7,8 +7,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 
+
 class TestPythonSelenium:
-    @mark.test9
+    @mark.test10
     def test_browser_test(self):
         # We will open the Google Chrome browser.
         driver = webdriver.Chrome()
@@ -26,5 +27,12 @@ class TestPythonSelenium:
                 print("Pass")
             else:
                 print("Values doesn't exit")
+        # Above code will select the desire value , But how to verify it
+        # We Can't get text as this is not part of HTML dome rather it's rendering at run time
+        # Hence we can use getAttribute method of webdriver
+        attribute = driver.find_element(by=By.ID, value="APjFqb")
+        name = attribute.get_attribute("value")
+        print("name -->> ", name)
+        assert name == "pankaj tripathi", "Name not selected"
         time.sleep(5)
         driver.close()
