@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 
 # https://testpages.eviltester.com/styled/index.html
 class TestPythonSelenium:
-    @mark.test133
+    @mark.test13
     def test_double_right_click_1(self):
         # We will open the Google Chrome browser.
         driver = webdriver.Chrome()
@@ -36,8 +36,8 @@ class TestPythonSelenium:
         print("Mouse hover is done")
         driver.close()
 
-    @mark.test133
-    def test_drag_and_Drop_2(self):
+    @mark.test13
+    def test_drag_and_drop_2(self):
         # We will open the Google Chrome browser.
         driver = webdriver.Chrome()
         time.sleep(1)
