@@ -44,7 +44,7 @@ class TestPythonSelenium:
         alert.dismiss()
         driver.close()
 
-    @mark.test122
+    @mark.test12
     def test_browser_test_3(self):
         # We will open the Google Chrome browser.
         driver = webdriver.Chrome()
