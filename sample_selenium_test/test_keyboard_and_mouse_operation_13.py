@@ -77,5 +77,3 @@ class TestPythonSelenium:
         time.sleep(2)
         print("Keyboard Enter done")
         driver.close()
-
-
