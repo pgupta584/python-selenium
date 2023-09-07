@@ -12,6 +12,7 @@ print(len(str_1))  # to find String length
 print(str_1[0])  # to get Char at certain index = 0
 print(str_1[1])  # to get Char at certain index = 1
 # print(str_1[6])  # to get Char at certain index = 6 --> IndexError: string index out of range
+print(str_1[3:6])  # to get substring --> from index 3 to 6
 
 # Verify String
 print(str_1 == str_2)  # Check if str_1 present inside str_2 --> return true if Yes
@@ -35,4 +36,3 @@ print("After Strip --> ", strip_obj)
 print("Left Strip --> ", str_6.lstrip())
 # Trim space only from Right
 print("Right Strip --> ", str_6.rstrip())
-
