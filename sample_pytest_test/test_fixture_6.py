@@ -10,6 +10,13 @@ import pytest
 def login_to_gmail():
     print("Login to Gmail Success")
 
+# Use of yield --> like after method/class
+@pytest.fixture(scope="class")
+def login_to_gmail():
+    print("Login to Gmail Success")
+    yield
+    print("Logout is Success")
+
 # If we want this test should run after every method
 # @pytest.fixture(scope="function")
 # def login_to_gmail():
