@@ -27,5 +27,5 @@ class Calculator:  # Create class using class <ClassName>
 
 
 # Create object --> we just give class not in other language we use new keyword like new <ClassName>();
-obj = Calculator(10, 5)
-print(obj.add_numbers())
+obj = Calculator()
+print(obj.add_number(10, 1))

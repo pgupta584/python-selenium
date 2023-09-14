@@ -1,4 +1,4 @@
-# If we want to iterate until a condition is false , we can use while loop
+# If we want to iterate until a condition is true , we can use while loop
 # Take one example
 age = 20
 
