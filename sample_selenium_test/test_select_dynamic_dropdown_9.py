@@ -18,13 +18,17 @@ class TestPythonSelenium:
         google_search = driver.find_element(by=By.NAME, value="q")
         google_search.send_keys("Pankaj")
         time.sleep(2)
-        roles = driver.find_elements(by=By.XPATH, value="(//li[@class='sbct sbre']/div/div/div/div/span)[1]")
+        # roles = driver.find_elements(by=By.TAG_NAME, value="(li[@class='sbct sbre']/div/div/div/div/span)[1]")
+        roles = driver.find_elements(by=By.XPATH, value="//li[contains(@class,'sbct')]")
         for drop_down in roles:
             # It will fetch all the text & if matched with value It will click
-            if drop_down.text == "Pankaj Tripathi":
+            print(drop_down.text)
+            if "Pankaj Kapur" in drop_down.text:
                 drop_down.click()
                 print("Pass")
+                break
             else:
                 print("Values doesn't exit")
         time.sleep(5)
+        print("Browser Closed")
         driver.close()

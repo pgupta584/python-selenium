@@ -1,4 +1,5 @@
 # First We will type the following statement to import the web driver:
+import re
 import time
 from pytest import mark
 from selenium import webdriver
@@ -33,6 +34,9 @@ class TestPythonSelenium:
         hover_element = driver.find_element(by=By.XPATH, value="//div[@aria-label='Search by voice']")
         action.move_to_element(hover_element).perform()
         time.sleep(2)
+        hover_element.click()
+        time.sleep(5)
+
         print("Mouse hover is done")
         driver.close()
 
@@ -42,10 +46,10 @@ class TestPythonSelenium:
         driver = webdriver.Chrome()
         time.sleep(1)
         driver.maximize_window()
-        driver.get("https://the-internet.herokuapp.com/drag_and_drop")
+        driver.get("https://www.google.com/")
         time.sleep(5)
-        source_element = driver.find_element(by=By.CSS_SELECTOR, value="#column-a")
-        target_element = driver.find_element(by=By.CSS_SELECTOR, value="#column-b")
+        source_element = driver.find_element(by=By.LINK_TEXT, value="हिन्दी")
+        target_element = driver.find_element(by=By.NAME, value="q")
         time.sleep(2)
         # Create Action class object & pass Driver control/Object
         action = ActionChains(driver)
