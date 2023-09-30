@@ -1,4 +1,5 @@
 import pytest
+from selenium import webdriver
 
 
 # --> fixture must be inside conftest file only --> name should be same
@@ -49,3 +50,37 @@ def multiple_valid_phone_number(request):  # We need to write request in functio
 def multiple_password(request):  # We need to write request in function to use param
     print("Loading Test Data - from external file OR Creating via some API calls etc")
     return request.param  # We have to return request.param to return multiple param
+
+# Framework Test
+# @pytest.fixture(scope="class")
+# def setup(request):
+#     # We will open the Google Chrome browser.
+#     driver = webdriver.Chrome()
+#     driver.implicitly_wait(30)
+#     driver.maximize_window()
+#     driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+#     request.cls.driver = driver
+#     yield
+#     driver.close()
+
+def pytest_addoption(parser):
+    parser.addoption("--browser", action="store", default="chrome")
+
+@pytest.fixture(scope="class")
+def setup(request):
+    # Use below code to get the values from run time option -- this will return browser name
+    browser = request.config.getoption("browser")
+    # Now Simple If else condition we can handle it
+    if browser == "chrome":
+        # We will open the Google Chrome browser.
+        driver = webdriver.Chrome()
+    elif browser == "safari":
+        driver = webdriver.Safari()
+    elif browser == "firefox":
+        driver = webdriver.Firefox()
+    driver.implicitly_wait(30)
+    driver.maximize_window()
+    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+    request.cls.driver = driver
+    yield
+    driver.close()
