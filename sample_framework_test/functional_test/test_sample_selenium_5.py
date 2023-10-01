@@ -7,7 +7,7 @@ from sample_framework_test.utility.TestBase import TestBase
 
 # @pytest.mark.usefixtures("setup")
 class TestSampleSelenium(TestBase):
-    @mark.sample_test_6
+    @mark.sample_test_60
     def test_invalid_login(self):
         login_page = LoginPage(self.driver)
         login_page.get_user_name().send_keys("Admin")

@@ -65,6 +65,7 @@ def multiple_password(request):  # We need to write request in function to use p
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
+    parser.addoption("--environment", action="store", default="preprod")
 
 @pytest.fixture(scope="class")
 def setup(request):
@@ -84,3 +85,7 @@ def setup(request):
     request.cls.driver = driver
     yield
     driver.close()
+
+@pytest.fixture
+def get_environment(request):
+    return request.config.getoption("--environment")
